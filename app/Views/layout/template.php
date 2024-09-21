@@ -29,7 +29,7 @@
 <body>
   <script src="<?= base_url('assets') ?>/dist/js/demo-theme.min.js?1692870487"></script>
   <div class="page">
-    <aside class="navbar navbar-vertical navbar-expand-lg navbar-transparent">
+    <aside class="navbar navbar-vertical navbar-expand-lg">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -61,36 +61,12 @@
       </div>
     </aside>
     <div class="page-wrapper">
-      <!-- Page body -->
-      <div class="page-body">
-        <div class="container-xl d-flex flex-column justify-content-center">
-          <div class="empty">
-            <div class="empty-img"><img src="<?= base_url('assets') ?>/static/illustrations/undraw_printing_invoices_5r4r.svg" height="128" alt="">
-            </div>
-            <p class="empty-title">No results found</p>
-            <p class="empty-subtitle text-secondary">
-              Try adjusting your search or filter to find what you're looking for.
-            </p>
-            <div class="empty-action">
-              <a href="./." class="btn btn-primary">
-                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M12 5l0 14" />
-                  <path d="M5 12l14 0" />
-                </svg>
-                Add your first client
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?= $this->renderSection('content') ?>
       <footer class="footer footer-transparent d-print-none">
         <div class="container-xl">
           <div class="row text-center align-items-center flex-row-reverse">
             <div class="col-lg-auto ms-lg-auto">
               <ul class="list-inline list-inline-dots mb-0">
-
               </ul>
             </div>
             <div class="col-12 col-lg-auto mt-3 mt-lg-0">
@@ -111,6 +87,7 @@
   <!-- Tabler Core -->
   <script src="<?= base_url('assets') ?>/dist/js/tabler.min.js?1692870487" defer></script>
   <script src="<?= base_url('assets') ?>/dist/js/demo.min.js?1692870487" defer></script>
+  <?= $this->renderSection('javascript') ?>
 </body>
 
 </html>
