@@ -28,6 +28,7 @@ class SuratIjin extends Migration
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('uuid_user', 'surat_m_user', 'uuid', 'RESTRICT', 'RESTRICT');
         $this->forge->addForeignKey('uuid_program_studi', 'surat_r_program_studi', 'uuid', 'RESTRICT', 'RESTRICT');
+        $this->forge->createTable('surat_t_ijin');
     }
 
     public function down()
