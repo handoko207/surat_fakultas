@@ -1,19 +1,11 @@
 <!doctype html>
-<!--
-* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
-* @version 1.0.0-beta20
-* @link https://tabler.io
-* Copyright 2018-2023 The Tabler Authors
-* Copyright 2018-2023 codecalm.net Paweł Kuna
-* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
--->
-<html lang="en">
+<html lang="id">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Sign up - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+  <title>Sign in with cover - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
   <!-- CSS files -->
   <link href="<?= base_url('assets') ?>/dist/css/tabler.min.css?1692870487" rel="stylesheet" />
   <link href="<?= base_url('assets') ?>/dist/css/tabler-flags.min.css?1692870487" rel="stylesheet" />
@@ -33,55 +25,51 @@
   </style>
 </head>
 
-<body class=" d-flex flex-column">
+<body class=" d-flex flex-column bg-white">
   <script src="<?= base_url('assets') ?>/dist/js/demo-theme.min.js?1692870487"></script>
-  <div class="page page-center">
-    <div class="container container-tight py-4">
-      <div class="text-center mb-4">
-        <a href="." class="navbar-brand navbar-brand-autodark">
-          <img src="<?= base_url('assets') ?>/static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
-        </a>
-      </div>
-      <form class="card card-md" action="./" method="get" autocomplete="off" novalidate>
-        <div class="card-body">
-          <h2 class="card-title text-center mb-4">Create new account</h2>
+  <div class="row g-0 flex-fill">
+    <div class="col-12 col-lg-6 col-xl-4 border-top-wide border-primary d-flex flex-column justify-content-center">
+      <div class="container container-tight my-5 px-lg-5">
+        <div class="text-center mb-4">
+          <a href="." class="navbar-brand navbar-brand-autodark"><img src="<?= base_url('assets') ?>/static/logo.svg" height="36" alt=""></a>
+        </div>
+        <h2 class="h3 text-center mb-3">
+          Register
+        </h2>
+        <form action="./" method="get" autocomplete="off" novalidate>
           <div class="mb-3">
-            <label class="form-label">Name</label>
-            <input type="text" class="form-control" placeholder="Enter name">
+            <label class="form-label">NIM / NIP</label>
+            <input type="text" class="form-control" placeholder="NIM / NIP Anda . . ." autocomplete="off">
           </div>
           <div class="mb-3">
-            <label class="form-label">Email address</label>
-            <input type="email" class="form-control" placeholder="Enter email">
+            <label class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" placeholder="Nama Lengkap Anda" autocomplete="off">
           </div>
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <div class="input-group input-group-flat">
-              <input type="password" class="form-control" placeholder="Password" autocomplete="off">
-              <span class="input-group-text">
-                <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                    <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
-                  </svg>
-                </a>
-              </span>
-            </div>
+            <input type="password" class="form-control" placeholder="Password Anda" autocomplete="off">
           </div>
           <div class="mb-3">
-            <label class="form-check">
-              <input type="checkbox" class="form-check-input" />
-              <span class="form-check-label">Agree the <a href="./terms-of-service.html" tabindex="-1">terms and policy</a>.</span>
-            </label>
+            <label class="form-label">Repeat Password</label>
+            <input type="password" class="form-control" placeholder="Ulangi Password Anda" autocomplete="off">
           </div>
+          <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input type="email" class="form-control" placeholder="your@institusi.com" autocomplete="off">
+          </div>
+
           <div class="form-footer">
-            <button type="submit" class="btn btn-primary w-100">Create new account</button>
+            <button type="submit" class="btn btn-primary w-100">Register</button>
           </div>
+        </form>
+        <div class="text-center text-secondary mt-3">
+          Sudah Punya Akun ? <a href="/login" tabindex="-1">Login Disini</a>
         </div>
-      </form>
-      <div class="text-center text-secondary mt-3">
-        Already have account? <a href="./sign-in.html" tabindex="-1">Sign in</a>
       </div>
+    </div>
+    <div class="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
+      <!-- Photo -->
+      <div class="bg-cover h-100 min-vh-100" style="background-image: url(<?= base_url('assets') ?>/static/custom/register.jpg)"></div>
     </div>
   </div>
   <!-- Libs JS -->

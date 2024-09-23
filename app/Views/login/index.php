@@ -61,24 +61,18 @@
               </span>
             </div>
           </div>
-          <div class="mb-2">
-            <label class="form-check">
-              <input type="checkbox" class="form-check-input" />
-              <span class="form-check-label">Remember me on this device</span>
-            </label>
-          </div>
           <div class="form-footer">
             <button type="submit" class="btn btn-primary w-100">Sign in</button>
           </div>
         </form>
         <div class="text-center text-secondary mt-3">
-          Don't have account yet? <a href="./sign-up.html" tabindex="-1">Sign up</a>
+          Belum Punya Akun ? <a href="/login/register" tabindex="-1">Daftar Disini</a>
         </div>
       </div>
     </div>
     <div class="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
       <!-- Photo -->
-      <div class="bg-cover h-100 min-vh-100" style="background-image: url(<?= base_url('assets') ?>/static/photos/finances-us-dollars-and-bitcoins-currency-money-2.jpg)"></div>
+      <div class="bg-cover h-100 min-vh-100" style="background-image: url(<?= base_url('assets') ?>/static/custom/login.jpg)"></div>
     </div>
   </div>
   <!-- Libs JS -->

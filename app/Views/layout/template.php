@@ -52,7 +52,7 @@
                   </svg>
                 </span>
                 <span class="nav-link-title">
-                  Home
+                  Beranda
                 </span>
               </a>
             </li>
