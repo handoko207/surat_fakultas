@@ -10,7 +10,7 @@ class SuratMasterUser extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 5, 'unsigned' => true, 'auto_increment' => true],
-            'uuid' => ['type' => 'CHAR', 'constraint' => 36, 'null' => true],
+            'uuid' => ['type' => 'CHAR', 'constraint' => 36, 'unique' => true, 'null' => true],
             'username' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'nama_lengkap' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'password' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],

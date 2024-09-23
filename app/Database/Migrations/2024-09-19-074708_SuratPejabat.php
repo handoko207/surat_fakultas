@@ -10,7 +10,7 @@ class SuratPejabat extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 5, 'unsigned' => true, 'auto_increment' => true],
-            'uuid' => ['type' => 'CHAR', 'constraint' => 36, 'null' => true],
+            'uuid' => ['type' => 'CHAR', 'constraint' => 36, 'unique' => true, 'null' => true],
             'nip' => ['type' => 'VARCHAR', 'constraint' => 18, 'null' => true],
             'nama' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'jabatan' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
