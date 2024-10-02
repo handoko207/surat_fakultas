@@ -15,9 +15,11 @@ class SuratMasterUser extends Migration
             'nama_lengkap' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'password' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'email' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
+            'uuid_program_studi' => ['type' => 'CHAR', 'constraint' => 36, 'null' => true],
             'role' => ['type' => 'ENUM("mahasiswa","operator","admin")', 'default' => 'mahasiswa'],
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('uuid_program_studi', 'surat_r_program_studi', 'uuid', 'RESTRICT', 'RESTRICT');
         $this->forge->createTable('surat_m_user');
     }
 

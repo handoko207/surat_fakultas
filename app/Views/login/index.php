@@ -66,7 +66,7 @@
           </div>
         </form>
         <div class="text-center text-secondary mt-3">
-          Belum Punya Akun ? <a href="/login/register" tabindex="-1">Daftar Disini</a>
+          Belum Punya Akun ? <a href="/register" tabindex="-1">Daftar Disini</a>
         </div>
       </div>
     </div>

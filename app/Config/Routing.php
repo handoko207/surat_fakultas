@@ -94,7 +94,7 @@ class Routing extends BaseRouting
      *
      * If FALSE, will stop searching and do NO automatic routing.
      */
-    public bool $autoRoute = true;
+    public bool $autoRoute = false;
 
     /**
      * For Defined Routes.
@@ -136,5 +136,5 @@ class Routing extends BaseRouting
      *
      * Default: false
      */
-    public bool $translateUriToCamelCase = false;
+    public bool $translateUriToCamelCase = true;
 }
