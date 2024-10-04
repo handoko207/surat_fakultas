@@ -44,9 +44,6 @@
           <div class="mb-2">
             <label class="form-label">
               Password
-              <span class="form-label-description">
-                <a href="./forgot-password.html">I forgot password</a>
-              </span>
             </label>
             <div class="input-group input-group-flat">
               <input type="password" class="form-control" placeholder="Your password" autocomplete="off">
@@ -77,8 +74,14 @@
   </div>
   <!-- Libs JS -->
   <!-- Tabler Core -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="<?= base_url('assets') ?>/dist/js/tabler.min.js?1692870487" defer></script>
   <script src="<?= base_url('assets') ?>/dist/js/demo.min.js?1692870487" defer></script>
+  <script src="<?= base_url('assets') ?>/dist/js/notifikasi.js"></script>
+
+  <script>
+
+  </script>
 </body>
 
 </html>
