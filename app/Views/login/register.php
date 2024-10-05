@@ -36,28 +36,55 @@
         <h2 class="h3 text-center mb-3">
           Register
         </h2>
-        <form action="./" method="get" autocomplete="off" novalidate>
+        <form action="/simpanData" method="post" autocomplete="off" enctype="multipart/form-data">
           <div class="mb-3">
             <label class="form-label">NIM / NIP</label>
-            <input type="text" class="form-control" placeholder="NIM / NIP Anda . . ." autocomplete="off">
+            <input type="text" class="form-control  <?= session('errorValidation.username') ? 'is-invalid' : '' ?>" placeholder="NIM / NIP Anda . . ." autocomplete="off" name="username" value="<?= set_value('username'); ?>">
+            <div class=" invalid-feedback">
+              <?= session('errorValidation.username'); ?>
+            </div>
           </div>
           <div class="mb-3">
             <label class="form-label">Nama Lengkap</label>
-            <input type="text" class="form-control" placeholder="Nama Lengkap Anda" autocomplete="off">
+            <input type="text" class="form-control  <?= session('errorValidation.namaLengkap') ? 'is-invalid' : '' ?>" placeholder="Nama Lengkap Anda" autocomplete="off" name="namaLengkap" value="<?= set_value('namaLengkap'); ?>">
+            <div class=" invalid-feedback">
+              <?= session('errorValidation.namaLengkap'); ?>
+            </div>
           </div>
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <input type="password" class="form-control" placeholder="Password Anda" autocomplete="off">
+            <input type="password" class="form-control  <?= session('errorValidation.password') ? 'is-invalid' : '' ?>" placeholder="Password Anda" autocomplete="off" name="password" value="<?= set_value('password'); ?>">
+            <div class=" invalid-feedback">
+              <?= session('errorValidation.password'); ?>
+            </div>
           </div>
           <div class="mb-3">
-            <label class="form-label">Repeat Password</label>
-            <input type="password" class="form-control" placeholder="Ulangi Password Anda" autocomplete="off">
+            <label class="form-label">Konfirmasi Password</label>
+            <input type="password" class="form-control  <?= session('errorValidation.repeatPassword') ? 'is-invalid' : '' ?>" placeholder="Konfirmasi Password Anda" autocomplete="off" name="repeatPassword" value="<?= set_value('repeatPassword'); ?>">
+            <div class=" invalid-feedback">
+              <?= session('errorValidation.repeatPassword'); ?>
+            </div>
           </div>
           <div class="mb-3">
             <label class="form-label">Email address</label>
-            <input type="email" class="form-control" placeholder="your@institusi.com" autocomplete="off">
+            <input type="email" class="form-control  <?= session('errorValidation.email') ? 'is-invalid' : '' ?>" placeholder="your@institusi.com" autocomplete="off" name="email" value="<?= set_value('email'); ?>">
+            <div class=" invalid-feedback">
+              <?= session('errorValidation.email'); ?>
+            </div>
           </div>
-
+          <div class="mb-3">
+            <div class="form-label">Program Studi</div>
+            <select class="form-select <?= session('errorValidation.programStudi') ? 'is-invalid' : '' ?>" name="programStudi">
+              <?php
+              foreach ($program_studi as $row) {
+                echo "<option value='$row[uuid]'>$row[nama_prodi]</option>";
+              }
+              ?>
+            </select>
+            <div class=" invalid-feedback">
+              <?= session('errorValidation.programStudi'); ?>
+            </div>
+          </div>
           <div class="form-footer">
             <button type="submit" class="btn btn-primary w-100">Register</button>
           </div>

@@ -9,6 +9,11 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Login::index');
 $routes->get('/login', 'Login::index');
 $routes->post('/login', 'Login::index');
+$routes->get('/auth', 'Login::auth');
+$routes->post('/auth', 'Login::auth');
+$routes->get('/logout', 'Login::logout');
+$routes->post('/simpanData', 'Login::simpanData');
+
 
 //register
 $routes->get('/register', 'Login::register');

@@ -10,9 +10,9 @@ class AuthFilter implements FilterInterface
 {
   public function before(RequestInterface $request, $arguments = null)
   {
-    // if (session()->get('logged_in') == null) {
-    //   return redirect()->to('/login')->with('pesan', ['username' => 'Anda belum login. Silakan login terlebih dahulu']);
-    // }
+    if (session()->get('logged_in') == null) {
+      return redirect()->to('/login')->with('pesan', ['title' => 'Login Gagal', 'text' => 'Anda belum login. Silakan login terlebih dahulu', 'icon' => 'error']);
+    }
   }
 
   public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

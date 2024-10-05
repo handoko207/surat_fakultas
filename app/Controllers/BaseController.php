@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class BaseController
@@ -52,7 +53,13 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
+        $this->validation = \Config\Services::validation();
+        $this->uuid =  Uuid::uuid4();
+    }
 
-        // E.g.: $this->session = \Config\Services::session();
+    public function getProgramStudi()
+    {
+        $model = new \App\Models\ModelProgramStudi();
+        return $model->findAll();
     }
 }

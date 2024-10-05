@@ -12,7 +12,7 @@ class ModelUser extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['uuid', 'username', 'nama_lengkap', 'password', 'email', 'role'];
+    protected $allowedFields    = ['uuid', 'username', 'nama_lengkap', 'password', 'email', 'role', 'uuid_program_studi'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
