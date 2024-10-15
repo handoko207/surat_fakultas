@@ -31,7 +31,7 @@ class Login extends BaseController
           'nama_lengkap' => $hasil['nama_lengkap'],
           'logged_in' => TRUE
         ]);
-        return redirect()->to('/home');
+        return redirect()->to('/beranda');
       } else {
         return redirect()->to('/login')->withInput()->with('pesan', ['title' => 'Login Gagal', 'text' => 'Username dan Password Salah', 'icon' => 'error']);
       }

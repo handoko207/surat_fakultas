@@ -21,4 +21,8 @@ $routes->post('/register', 'Login::register');
 
 
 //home
-$routes->get('/home', 'Home::index');
+$routes->get('/beranda', 'Beranda::index');
+
+
+//pengguna / User
+$routes->get('/user', 'User::index');
