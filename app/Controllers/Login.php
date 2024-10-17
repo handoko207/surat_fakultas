@@ -73,4 +73,9 @@ class Login extends BaseController
     session()->destroy();
     return redirect()->to('/login');
   }
+
+  public function error404()
+  {
+    return view('errors/costum/404');
+  }
 }
