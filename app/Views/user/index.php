@@ -12,7 +12,7 @@
     </div>
     <div class="card-body">
       <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-primary block mb-2">
+        <button type="button" class="btn btn-primary block mb-2" onclick="tambah()">
           Tambah Data
         </button>
       </div>
@@ -37,6 +37,50 @@
 
 </section>
 <!-- Basic Tables end -->
+
+<!-- Modal -->
+<div class="modal fade text-left" id="default" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel1">Basic Modal</h5>
+        <button type="button" class="close rounded-pill" data-bs-dismiss="modal"
+          aria-label="Close">
+          <i data-feather="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Bonbon caramels muffin. Chocolate bar oat cake cookie pastry dragée pastry.
+          Carrot cake
+          chocolate tootsie roll chocolate bar candy canes biscuit.
+
+          Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
+          roll. Toffee sugar
+          plum sugar plum jelly-o jujubes bonbon dessert carrot cake. Cookie dessert
+          tart muffin topping
+          donut icing fruitcake. Sweet roll cotton candy dragée danish Candy canes
+          chocolate bar cookie.
+          Gingerbread apple pie oat cake. Carrot cake fruitcake bear claw. Pastry
+          gummi bears
+          marshmallow jelly-o.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-bs-dismiss="modal">
+          <i class="bx bx-x d-block d-sm-none"></i>
+          <span class="d-none d-sm-block">Close</span>
+        </button>
+        <button type="button" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+          <i class="bx bx-check d-block d-sm-none"></i>
+          <span class="d-none d-sm-block">Accept</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ModalEnd -->
 
 
 <?= $this->endSection(); ?>
@@ -63,5 +107,10 @@
       }
     });
   });
+</script>
+<script>
+  function tambah() {
+    $('#default').modal('show');
+  }
 </script>
 <?= $this->endSection(); ?>
