@@ -14,6 +14,8 @@ class SuratIjinDetail extends Migration
             'nim' => ['type' => 'VARCHAR', 'constraint' => 18, 'null' => true],
             'nama_mahasiswa' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'uuid_program_studi' => ['type' => 'CHAR', 'constraint' => 36, 'null' => true],
+            'created_at' => ['type' => 'DATETIME', 'null' => true],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('uuid_surat_ijin', 'surat_t_ijin', 'uuid', 'RESTRICT', 'RESTRICT');

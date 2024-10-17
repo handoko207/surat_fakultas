@@ -26,3 +26,4 @@ $routes->get('/beranda', 'Beranda::index');
 
 //pengguna / User
 $routes->get('/user', 'User::index');
+$routes->get('/user/ajaxDatatable', 'User::ajaxDatatable');

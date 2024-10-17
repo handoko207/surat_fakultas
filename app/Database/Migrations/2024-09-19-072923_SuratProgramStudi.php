@@ -14,6 +14,8 @@ class SuratProgramStudi extends Migration
             'kode_prodi' => ['type' => 'VARCHAR', 'constraint' => 10, 'null' => true],
             'nama_prodi' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'jenjang' => ['type' => 'ENUM("D3","S1","S2","S3","PROFESI","SPESIALIS","-")', 'default' => '-'],
+            'created_at' => ['type' => 'DATETIME', 'null' => true],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('surat_r_program_studi');

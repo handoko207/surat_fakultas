@@ -33,7 +33,9 @@ class SuratAktifKuliah extends Migration
             'instansi' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'tanggal_pengajuan' => ['type' => 'DATE', 'null' => true],
             'status' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
-            'status_keterangan' => ['type' => 'TEXT', 'null' => true]
+            'status_keterangan' => ['type' => 'TEXT', 'null' => true],
+            'created_at' => ['type' => 'DATETIME', 'null' => true],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('uuid_user', 'surat_m_user', 'uuid', 'RESTRICT', 'RESTRICT');

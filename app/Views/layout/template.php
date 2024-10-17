@@ -30,7 +30,7 @@
         <div class="sidebar-header position-relative">
           <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-              <a href="index.html"><img src="<?= base_url(); ?>/assets/mazer/compiled/svg/logo.svg" alt="Logo" srcset="" /></a>
+              <a href="index.html"><img src="<?= base_url(); ?>uploads/logo/logo.svg" alt="Logo" srcset="" /></a>
             </div>
             <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
               <svg
@@ -70,7 +70,7 @@
           </div>
           <hr />
         </div>
-        <div class="sidebar-menu">
+        <div class="sidebar-menu mt-0">
           <ul class="menu">
             <li class="sidebar-title">Menu</li>
 
@@ -80,6 +80,9 @@
                 <span>Dashboard</span>
               </a>
             </li>
+
+            <li class="sidebar-title">Data Master</li>
+
             <li class="sidebar-item <?= service('uri')->getSegment(1) === 'user' ? 'active' : ''; ?>">
               <a href="/user" class="sidebar-link">
                 <i class="bi bi-person-gear"></i>
@@ -102,7 +105,7 @@
       <footer>
         <div class="footer clearfix mb-0 text-muted">
           <div class="float-start">
-            <p>2023 &copy; Mazer</p>
+            <p><?= date('Y') ?> &copy; Handoko</p>
           </div>
           <div class="float-end">
             <p>

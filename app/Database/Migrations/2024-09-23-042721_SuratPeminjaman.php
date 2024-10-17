@@ -28,7 +28,9 @@ class SuratPeminjaman extends Migration
             'nama_ketua_pelaksana' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'nim_ketua_pelaksana' => ['type' => 'VARCHAR', 'constraint' => 18, 'null' => true],
             'status' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
-            'status_keterangan' => ['type' => 'TEXT', 'null' => true]
+            'status_keterangan' => ['type' => 'TEXT', 'null' => true],
+            'created_at' => ['type' => 'DATETIME', 'null' => true],
+            'updated_at' => ['type' => 'DATETIME', 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('uuid_user', 'surat_m_user', 'uuid', 'RESTRICT', 'RESTRICT');
