@@ -9,6 +9,8 @@ class Beranda extends BaseController
 {
     public function index()
     {
-        return view('beranda/index');
+        $data['title'] = 'Beranda';
+        $data['subtitle'] = 'Halaman ini berisikan statistik Semua Data';
+        return view('beranda/index', $data);
     }
 }

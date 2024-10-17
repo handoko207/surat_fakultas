@@ -106,9 +106,25 @@
           <i class="bi bi-justify fs-3"></i>
         </a>
       </header>
-      <?= $this->renderSection('content') ?>
-
-
+      <div class="page-heading">
+        <div class="page-title">
+          <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+              <h3><?= $title; ?></h3>
+              <p class="text-subtitle text-muted"><?= $subtitle; ?></p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+              <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/beranda">Beranda</a></li>
+                  <li class="breadcrumb-item active" aria-current="page"><?= ucfirst(service('uri')->getSegment(1)); ?></li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <?= $this->renderSection('content') ?>
+      </div>
       <footer>
         <div class="footer clearfix mb-0 text-muted">
           <div class="float-start">

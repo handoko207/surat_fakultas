@@ -9,6 +9,9 @@ class Login extends BaseController
 {
   public function index()
   {
+    if (session()->get('logged_in')) {
+      return redirect()->to('/beranda');
+    }
     return view('login/index');
   }
 
