@@ -27,3 +27,5 @@ $routes->get('/beranda', 'Beranda::index');
 //pengguna / User
 $routes->get('/user', 'User::index');
 $routes->get('/user/ajaxDatatable', 'User::ajaxDatatable');
+$routes->post('/user/simpanTambah', 'User::simpanTambah');
+$routes->get('/user/getEdit/(:any)', 'User::getEdit/$1');

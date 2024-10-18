@@ -43,4 +43,12 @@ class ModelUser extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getUser($uuid)
+    {
+
+        $this->select('surat_m_user.uuid, surat_m_user.username, surat_m_user.nama_lengkap, surat_m_user.email, surat_m_user.role, surat_m_user.uuid_program_studi, ps.nama_prodi');
+        $this->join('surat_r_program_studi as ps', 'ps.uuid = surat_m_user.uuid_program_studi');
+        return $this->where(['surat_m_user.uuid' => $uuid])->first();
+    }
 }

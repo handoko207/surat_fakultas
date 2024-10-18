@@ -115,6 +115,14 @@ class Validation extends BaseConfig
                 'required' => 'Program Studi tidak boleh kosong',
                 'not_in_list' => 'Harap memilih Program Studi',
             ]
+        ],
+        'role' => [
+            'label' => 'Role',
+            'rules' => 'required|in_list[mahasiswa,admin,operator]',
+            'errors' => [
+                'required' => 'Program Studi tidak boleh kosong',
+                'in_list' => 'Harap memilih Role',
+            ]
         ]
     ]);
 
