@@ -12,6 +12,7 @@ class User extends BaseController
 {
     public function index()
     {
+
         $data['title'] = 'Manajemen User';
         $data['subtitle'] = 'Halaman ini digunakan untuk manajemen User';
         $data['program_studi'] = $this->getProgramStudi();
@@ -50,7 +51,8 @@ class User extends BaseController
             'uuid_program_studi' => $this->request->getPost('programStudi'),
             'role' => $this->request->getPost('role'),
         ];
-        if ($userModels->insert($data)) {
+        $hasil = $userModels->insert($data);
+        if ($hasil) {
             return $this->response->setJSON([
                 'status' => 'success',
                 'title' => 'Tambah Data',
@@ -71,5 +73,41 @@ class User extends BaseController
         $userModels = new userModels();
         $data = $userModels->getUser($uuid);
         return $this->response->setJSON($data);
+    }
+
+    public function updateData()
+    {
+
+        $userModels = new userModels();
+        if (!$this->validation->run($this->request->getPost(), 'register')) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'errors' => $this->validation->getErrors()
+            ]);
+        }
+
+        $data = [
+            'username' => $this->request->getPost('username'),
+            'nama_lengkap' => $this->request->getPost('namaLengkap'),
+            'email' => $this->request->getPost('email'),
+            'uuid_program_studi' => $this->request->getPost('programStudi'),
+            'role' => $this->request->getPost('role'),
+        ];
+        $hasil = $userModels->update($this->request->getPost('uuid'), $data);
+        if ($hasil) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'title' => 'Update Data',
+                'text' => 'Data Berhasil Diupdate',
+                'icon' => 'success'
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'title' => 'Update Data',
+                'text' => 'Data Gagal Diupdate',
+                'icon' => 'error'
+            ]);
+        }
     }
 }

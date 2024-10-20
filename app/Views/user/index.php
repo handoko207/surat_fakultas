@@ -225,6 +225,7 @@
   }
 
   function editTampil(uuid) {
+    resetValidation();
     $('#myModalLabel1').html('Edit Data Pengguna');
     $('#passwordField').hide();
     $('#repeatPasswordField').hide();
@@ -244,6 +245,38 @@
       },
       error: function(xhr, status, error) {
         // Tangani error dari server atau koneksi
+      }
+    });
+  }
+
+  function updateData() {
+    var formData = new FormData();
+    var uuid = $('#uuid').val();
+    formData.append('username', $('#username').val());
+    formData.append('namaLengkap', $('#namaLengkap').val());
+    formData.append('email', $('#email').val());
+    formData.append('programStudi', $('#programStudi').val());
+    formData.append('role', $('#role').val());
+    $.ajax({
+      url: '<?= site_url('user/updateData'); ?>/' + uuid,
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(data) {
+        resetValidation(); // Bersihkan error sebelumnya
+        if (data.status === 'success') {
+          $('#default').modal('hide'); // Tutup modal
+          $('#table').DataTable().ajax.reload(); // Reload table
+          showNotification(data.title, data.text, data.icon); // Tampilkan notifikasi
+        } else if (data.status === 'error') {
+          showErrors(data.errors); // Tampilkan error di setiap field
+          $('#default').modal('show'); // Tetap tampilkan modal jika ada error
+        }
+      },
+      error: function(xhr, status, error) {
+        // Tangani error dari server atau koneksi
+        $('#default').modal('show');
       }
     });
   }
