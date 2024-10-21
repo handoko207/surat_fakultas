@@ -174,6 +174,7 @@
 </script>
 <script>
   function tambah() {
+    resetValidation();
     $('#default').modal('show');
     $('#myModalLabel1').html('Tambah Data Pengguna');
     $('#passwordField').show();
@@ -284,6 +285,7 @@
   // Bersihkan validasi
   function resetValidation() {
     $('.form-control').removeClass('is-invalid');
+    $('.form-select').removeClass('is-invalid');
     $('.invalid-feedback').text('');
   }
 
