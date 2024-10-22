@@ -32,6 +32,8 @@ class Login extends BaseController
         session()->set([
           'username' => $hasil['username'],
           'nama_lengkap' => $hasil['nama_lengkap'],
+          'uuid' => $hasil['uuid'],
+          'role' => $hasil['role'],
           'logged_in' => TRUE
         ]);
         return redirect()->to('/beranda');
@@ -80,5 +82,9 @@ class Login extends BaseController
   public function error404()
   {
     return view('errors/costum/404');
+  }
+  public function error403()
+  {
+    return view('errors/costum/403');
   }
 }

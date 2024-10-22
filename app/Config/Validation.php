@@ -126,6 +126,44 @@ class Validation extends BaseConfig
         ]
     ]);
 
+    public array $registerUpdate = ([
+        'namaLengkap' => [
+            'label' => 'Nama Lengkap',
+            'rules' => 'required|min_length[3]|max_length[50]|alpha_space',
+            'errors' => [
+                'required' => 'Nama Lengkap tidak boleh kosong',
+                'min_length' => 'Nama Lengkap minimal 3 karakter',
+                'max_length' => 'Nama Lengkap maksimal 50 karakter',
+                'alpha_space' => 'Nama Lengkap hanya boleh berisi huruf dan spasi',
+            ]
+        ],
+        'email' => [
+            'label' => 'Email',
+            'rules' => 'required|valid_email|is_unique[surat_m_user.email]|max_length[50]',
+            'errors' => [
+                'required' => 'Email tidak boleh kosong',
+                'valid_email' => 'Email tidak valid',
+                'is_unique' => 'Email sudah digunakan',
+                'max_length' => 'Email maksimal 50 karakter',
+            ]
+        ],
+        'programStudi' => [
+            'label' => 'Program Studi',
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Program Studi tidak boleh kosong',
+            ]
+        ],
+        'role' => [
+            'label' => 'Role',
+            'rules' => 'required|in_list[mahasiswa,admin,operator]',
+            'errors' => [
+                'required' => 'Program Studi tidak boleh kosong',
+                'in_list' => 'Harap memilih Role',
+            ]
+        ]
+    ]);
+
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------

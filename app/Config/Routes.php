@@ -14,6 +14,7 @@ $routes->post('/auth', 'Login::auth');
 $routes->get('/logout', 'Login::logout');
 $routes->post('/simpanData', 'Login::simpanData');
 
+$routes->get('/error403', 'Login::error403');
 
 //register
 $routes->get('/register', 'Login::register');
@@ -30,3 +31,5 @@ $routes->get('/user/ajaxDatatable', 'User::ajaxDatatable');
 $routes->post('/user/simpanTambah', 'User::simpanTambah');
 $routes->get('/user/getEdit/(:any)', 'User::getEdit/$1');
 $routes->post('/user/updateData/(:any)', 'User::updateData/$1');
+$routes->get('/user/hapusData/(:any)', 'User::hapusData/$1');
+$routes->get('/user/resetPassword/(:any)', 'User::resetPassword/$1');

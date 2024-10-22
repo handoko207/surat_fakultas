@@ -55,11 +55,25 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
         $this->validation = \Config\Services::validation();
         $this->uuid =  Uuid::uuid4();
+        $this->role = session()->get('role');
+        $this->nama_lengkap = session()->get('nama_lengkap');
+        $this->uuid_user = session()->get('uuid');
     }
 
     public function getProgramStudi()
     {
         $model = new \App\Models\ModelProgramStudi();
         return $model->findAll();
+    }
+
+    public function checkAkses($role)
+    {
+        // Jika role user ada di array $role, return true
+        if (in_array($this->role, $role)) {
+            return true;
+        }
+
+        // Jika role user tidak ada, return false
+        return false;
     }
 }

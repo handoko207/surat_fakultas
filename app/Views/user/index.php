@@ -174,12 +174,20 @@
 </script>
 <script>
   function tambah() {
-    resetValidation();
     $('#default').modal('show');
     $('#myModalLabel1').html('Tambah Data Pengguna');
     $('#passwordField').show();
     $('#labelTombol').text('Tambah Data');
     $('#repeatPasswordField').show();
+    $('#uuid').val('');
+    $('#username').val('');
+    $('#namaLengkap').val('');
+    $('#password').val('');
+    $('#repeatPassword').val('');
+    $('#email').val('');
+    $('#programStudi').val('');
+    $('#role').val('');
+    resetValidation();
   }
 
   function simpan() {
@@ -230,6 +238,7 @@
     $('#myModalLabel1').html('Edit Data Pengguna');
     $('#passwordField').hide();
     $('#repeatPasswordField').hide();
+    $('#username').prop('readonly', true);
     $('#labelTombol').text('Update Data');
     $('#default').modal('show');
     $('#uuid').val(uuid);
@@ -237,7 +246,6 @@
       url: '<?= site_url('user/getEdit'); ?>/' + uuid,
       type: 'GET',
       success: function(data) {
-        console.log(data);
         $('#username').val(data.username);
         $('#namaLengkap').val(data.nama_lengkap);
         $('#email').val(data.email);
@@ -253,11 +261,11 @@
   function updateData() {
     var formData = new FormData();
     var uuid = $('#uuid').val();
-    formData.append('username', $('#username').val());
     formData.append('namaLengkap', $('#namaLengkap').val());
     formData.append('email', $('#email').val());
     formData.append('programStudi', $('#programStudi').val());
     formData.append('role', $('#role').val());
+    formData.append('uuid', uuid);
     $.ajax({
       url: '<?= site_url('user/updateData'); ?>/' + uuid,
       type: 'POST',
@@ -282,11 +290,67 @@
     });
   }
 
+  function hapusData(uuid) {
+    Swal.fire({
+      title: "Hapus Data",
+      text: "Apakah Anda yakin ingin menghapus data ini?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, Hapus!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: '<?= site_url('user/hapusData'); ?>/' + uuid,
+          type: 'GET',
+          success: function(data) {
+            if (data.status === 'success') {
+              $('#table').DataTable().ajax.reload();
+              showNotification(data.title, data.text, data.icon); // Tampilkan notifikasi
+            }
+          },
+          error: function(xhr, status, error) {
+            showNotification(data.title, data.text, data.icon); // Tampilkan notifikasi
+          }
+        });
+      }
+    });
+  }
+
+  function resetPassword($uuid) {
+    Swal.fire({
+      title: "Reset Password",
+      text: "Apakah Anda yakin ingin mereset password pengguna ini?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, Reset!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: '<?= site_url('user/resetPassword'); ?>/' + $uuid,
+          type: 'GET',
+          success: function(data) {
+            if (data.status === 'success') {
+              showNotificationHtml(data.title, data.text, data.icon); // Tampilkan notifikasi
+            }
+          },
+          error: function(xhr, status, error) {
+            showNotification(data.title, data.text, data.icon); // Tampilkan notifikasi
+          }
+        });
+      }
+    });
+  }
+
   // Bersihkan validasi
   function resetValidation() {
     $('.form-control').removeClass('is-invalid');
     $('.form-select').removeClass('is-invalid');
     $('.invalid-feedback').text('');
+    $('#username').prop('readonly', false);
   }
 
   // Tampilkan error ke masing-masing field
