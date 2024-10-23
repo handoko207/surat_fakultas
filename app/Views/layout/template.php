@@ -83,6 +83,13 @@
               </a>
             </li>
 
+            <li class="sidebar-title">Master Data</li>
+            <li class="sidebar-item <?= service('uri')->getSegment(1) === 'program-studi' ? 'active' : ''; ?>">
+              <a href="/program-studi" class="sidebar-link">
+                <i class="bi bi-bank2"></i>
+                <span>Program Studi</span>
+              </a>
+            </li>
             <li class="sidebar-item <?= service('uri')->getSegment(1) === 'user' ? 'active' : ''; ?>">
               <a href="/user" class="sidebar-link">
                 <i class="bi bi-person-gear"></i>

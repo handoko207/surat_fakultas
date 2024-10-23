@@ -164,6 +164,38 @@ class Validation extends BaseConfig
         ]
     ]);
 
+    public array $prodi = ([
+        'kodeProdi' => [
+            'label' => 'Kode Prodi',
+            'rules' => 'required|min_length[3]|max_length[10]|alpha_numeric|is_unique[surat_r_program_studi.kode_prodi]',
+            'errors' => [
+                'required' => 'Kode Prodi tidak boleh kosong',
+                'min_length' => 'Kode Prodi minimal 3 karakter',
+                'max_length' => 'Kode Prodi maksimal 10 karakter',
+                'alpha_numeric' => 'Kode Prodi hanya boleh berisi huruf dan angka',
+                'is_unique' => 'Kode Prodi sudah digunakan',
+            ]
+        ],
+        'namaProdi' => [
+            'label' => 'Nama Prodi',
+            'rules' => 'required|min_length[3]|max_length[50]|alpha_space',
+            'errors' => [
+                'required' => 'Nama Prodi tidak boleh kosong',
+                'min_length' => 'Nama Prodi minimal 3 karakter',
+                'max_length' => 'Nama Prodi maksimal 50 karakter',
+                'alpha_space' => 'Nama Prodi hanya boleh berisi huruf dan spasi',
+            ]
+        ],
+        'jenjang' => [
+            'label' => 'Jenjang',
+            'rules' => 'required|in_list[D3,S1,S2,S3,SPESIALIS,PROFESI]',
+            'errors' => [
+                'required' => 'Jenjang tidak boleh kosong',
+                'in_list' => 'Harap memilih Jenjang',
+            ]
+        ]
+    ]);
+
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------

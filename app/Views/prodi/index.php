@@ -7,7 +7,7 @@
   <div class="card">
     <div class="card-header">
       <h5 class="card-title">
-        Data Pengguna
+        Data Program Studi
       </h5>
     </div>
     <div class="card-body">
@@ -20,11 +20,9 @@
         <table class="table" id="table">
           <thead>
             <tr>
-              <th>Username</th>
-              <th>Nama Lengkap</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Program Studi</th>
+              <th>Kode Prodi</th>
+              <th>Nama Prodi</th>
+              <th>Jenjang</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -54,78 +52,38 @@
         <form action="#" method="POST" enctype="multipart/form-data">
           <input type="hidden" class="form-control" id="uuid" name="uuid">
           <div class="col-sm-12">
-            <h6>Username</h6>
+            <h6>Kode Prodi</h6>
             <div class="form-group position-relative has-icon-left">
-              <input type="text" class="form-control" id="username" name="username" placeholder="Isikan Username" control-id="ControlID-16">
-              <div class="form-control-icon">
-                <i class="bi bi-person-gear"></i>
-              </div>
-              <span class="invalid-feedback" id="usernameError"></span>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <h6>Nama Lengkap</h6>
-            <div class="form-group position-relative has-icon-left">
-              <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" placeholder="Isikan Nama Lengkap" control-id="ControlID-16">
-              <div class="form-control-icon">
-                <i class="bi bi-person-vcard"></i>
-              </div>
-              <span class="invalid-feedback" id="namaLengkapError"></span>
-            </div>
-          </div>
-          <div class="col-sm-12" id="passwordField">
-            <h6>Password</h6>
-            <div class="form-group position-relative has-icon-left">
-              <input type="text" class="form-control" id="password" name="password" placeholder="Isikan Password" control-id="ControlID-16">
+              <input type="text" class="form-control" id="kodeProdi" name="kodeProdi" placeholder="Isikan Kode Prodi" control-id="ControlID-16">
               <div class="form-control-icon">
                 <i class="bi bi-key"></i>
               </div>
-              <span class="invalid-feedback" id="passwordError"></span>
-            </div>
-          </div>
-          <div class="col-sm-12" id="repeatPasswordField">
-            <h6>Konfirmasi Password</h6>
-            <div class="form-group position-relative has-icon-left">
-              <input type="text" class="form-control" id="repeatPassword" name="repeatPassword" placeholder="Isikan Password Ulang " control-id="ControlID-16">
-              <div class="form-control-icon">
-                <i class="bi bi-key"></i>
-              </div>
-              <span class="invalid-feedback" id="repeatPasswordError"></span>
+              <span class="invalid-feedback" id="kodeProdiError"></span>
             </div>
           </div>
           <div class="col-sm-12">
-            <h6>Email</h6>
+            <h6>Nama Program Studi</h6>
             <div class="form-group position-relative has-icon-left">
-              <input type="text" class="form-control " id="email" name="email" placeholder="Isikan Email" control-id="ControlID-16">
+              <input type="text" class="form-control" id="namaProdi" name="namaProdi" placeholder="Isikan Nama Program Studi" control-id="ControlID-16">
               <div class="form-control-icon">
-                <i class="bi bi-envelope"></i>
+                <i class="bi bi-bank"></i>
               </div>
-              <span class="invalid-feedback" id="emailError"></span>
+              <span class="invalid-feedback" id="namaProdiError"></span>
             </div>
           </div>
           <div class="col-md-12">
-            <h6>Program Studi</h6>
+            <h6>Jenjang</h6>
             <fieldset class="form-group">
-              <select class="form-select" id="programStudi" control-id="ControlID-2">
-                <?php
-                foreach ($program_studi as $row) {
-                  echo '<option value="' . $row['uuid'] . '">' . $row['nama_prodi'] . '</option>';
-                }
-                ?>
-              </select>
-              <span class="invalid-feedback" id="programStudiError"></span>
-            </fieldset>
-          </div>
-          <div class="col-md-12">
-            <h6>Role</h6>
-            <fieldset class="form-group">
-              <select class="form-select" id="role" control-id="ControlID-2">
+              <select class="form-select" id="jenjang" control-id="ControlID-2">
                 <option value="-" selected disabled>-- Silakan Pilih --</option>
-                <option value="mahasiswa">Mahasiswa</option>
-                <option value="operator">Operator</option>
-                <option value="admin">Admin</option>
+                <option value="D3">D3</option>
+                <option value="S1">S1</option>
+                <option value="S2">S2</option>
+                <option value="S3">S3</option>
+                <option value="PROFESI">PROFESI</option>
+                <option value="SPESIALIS">SPESIALIS</option>
               </select>
-              <span class="invalid-feedback" id="roleError"></span>
+              <span class="invalid-feedback" id="jenjangError"></span>
             </fieldset>
           </div>
       </div>
@@ -158,7 +116,7 @@
     var table = $('#table').DataTable({
       processing: true,
       serverSide: true,
-      ajax: '<?php echo site_url('user/ajaxDatatable'); ?>',
+      ajax: '<?php echo site_url('/program-studi/ajaxDatatable'); ?>',
       columnDefs: [{
         targets: -1,
         orderable: false
@@ -175,18 +133,13 @@
 <script>
   function tambah() {
     $('#default').modal('show');
-    $('#myModalLabel1').html('Tambah Data Pengguna');
+    $('#myModalLabel1').html('Tambah Data Program Studi');
     $('#passwordField').show();
     $('#labelTombol').text('Tambah Data');
-    $('#repeatPasswordField').show();
     $('#uuid').val('');
-    $('#username').val('');
-    $('#namaLengkap').val('');
-    $('#password').val('');
-    $('#repeatPassword').val('');
-    $('#email').val('');
-    $('#programStudi').val('');
-    $('#role').val('');
+    $('#kodeProdi').val('');
+    $('#namProdi').val('');
+    $('#jenjang').val('');
     resetValidation();
   }
 
@@ -201,16 +154,11 @@
 
   function tambahData() {
     var formData = new FormData();
-    formData.append('username', $('#username').val());
-    formData.append('namaLengkap', $('#namaLengkap').val());
-    formData.append('password', $('#password').val());
-    formData.append('repeatPassword', $('#repeatPassword').val());
-    formData.append('email', $('#email').val());
-    formData.append('programStudi', $('#programStudi').val());
-    formData.append('role', $('#role').val());
-
+    formData.append('kodeProdi', $('#kodeProdi').val());
+    formData.append('namaProdi', $('#namaProdi').val());
+    formData.append('jenjang', $('#jenjang').val());
     $.ajax({
-      url: '<?= site_url('user/simpanTambah'); ?>',
+      url: '<?= site_url('program-studi/simpanTambah'); ?>',
       type: 'POST',
       data: formData,
       processData: false,
@@ -235,22 +183,17 @@
 
   function editTampil(uuid) {
     resetValidation();
-    $('#myModalLabel1').html('Edit Data Pengguna');
-    $('#passwordField').hide();
-    $('#repeatPasswordField').hide();
-    $('#username').prop('readonly', true);
+    $('#myModalLabel1').html('Edit Data Program Studi');
     $('#labelTombol').text('Update Data');
     $('#default').modal('show');
     $('#uuid').val(uuid);
     $.ajax({
-      url: '<?= site_url('user/getEdit'); ?>/' + uuid,
+      url: '<?= site_url('program-studi/getEdit'); ?>/' + uuid,
       type: 'GET',
       success: function(data) {
-        $('#username').val(data.username);
-        $('#namaLengkap').val(data.nama_lengkap);
-        $('#email').val(data.email);
-        $('#programStudi').val(data.uuid_program_studi).attr('selected', 'true');
-        $('#role').val(data.role).attr('selected', 'true');
+        $('#kodeProdi').val(data.kode_prodi);
+        $('#namaProdi').val(data.nama_prodi);
+        $('#jenjang').val(data.jenjang).attr('selected', 'true');;
       },
       error: function(xhr, status, error) {
         // Tangani error dari server atau koneksi
@@ -261,13 +204,12 @@
   function updateData() {
     var formData = new FormData();
     var uuid = $('#uuid').val();
-    formData.append('namaLengkap', $('#namaLengkap').val());
-    formData.append('email', $('#email').val());
-    formData.append('programStudi', $('#programStudi').val());
-    formData.append('role', $('#role').val());
+    formData.append('kodeProdi', $('#kodeProdi').val());
+    formData.append('namaProdi', $('#namaProdi').val());
+    formData.append('jenjang', $('#jenjang').val());
     formData.append('uuid', uuid);
     $.ajax({
-      url: '<?= site_url('user/updateData'); ?>/' + uuid,
+      url: '<?= site_url('program-studi/updateData'); ?>/' + uuid,
       type: 'POST',
       data: formData,
       processData: false,
@@ -302,49 +244,18 @@
     }).then((result) => {
       if (result.isConfirmed) {
         $.ajax({
-          url: '<?= site_url('user/hapusData'); ?>/' + uuid,
+          url: '<?= site_url('program-studi/hapusData'); ?>/' + uuid,
           type: 'GET',
           success: function(data) {
             if (data.status === 'success') {
               $('#table').DataTable().ajax.reload();
               showNotification(data.title, data.text, data.icon); // Tampilkan notifikasi
             } else if (data.status === 'error') {
-              showNotificationHtml(data.title, data.text, data.icon); // Tampilkan notifikasi
+              showNotification(data.title, data.text, data.icon); // Tampilkan notifikasi
             }
           },
           error: function(xhr, status, error) {
-            showNotification(data.title, data.text, data.icon); // Tampilkan notifikasi
-          }
-        });
-      }
-    });
-  }
-
-  function resetPassword($uuid) {
-    Swal.fire({
-      title: "Reset Password",
-      text: "Apakah Anda yakin ingin mereset password pengguna ini?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Ya, Reset!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        $.ajax({
-          url: '<?= site_url('user/resetPassword'); ?>/' + $uuid,
-          type: 'GET',
-          success: function(data) {
-            if (data.status === 'success') {
-              showNotificationHtml(data.title, data.text, data.icon); // Tampilkan notifikasi
-            } else if (data.status === 'error') {
-              showNotificationHtml(data.title, data.text, data.icon); // Tampilkan notifikasi
-            }
-          },
-          error: function(xhr, status, error) {
-            showNotification(data.title, data.text, data.icon); // Tampilkan notifikasi
-            //showNotification('Hapus Data', 'Data Gagal Dihapus, silakan hubungi Administrator', 'error');
-
+            showNotification('Hapus Data', 'Data Gagal Dihapus, silakan hubungi Administrator', 'error');
           }
         });
       }
@@ -356,7 +267,6 @@
     $('.form-control').removeClass('is-invalid');
     $('.form-select').removeClass('is-invalid');
     $('.invalid-feedback').text('');
-    $('#username').prop('readonly', false);
   }
 
   // Tampilkan error ke masing-masing field
