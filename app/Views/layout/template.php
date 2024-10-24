@@ -96,7 +96,12 @@
                 <span>Pengguna</span>
               </a>
             </li>
-
+            <li class="sidebar-item <?= service('uri')->getSegment(1) === 'pejabat' ? 'active' : ''; ?>">
+              <a href="/pejabat" class="sidebar-link">
+                <i class="bi bi-mortarboard"></i>
+                <span>Pejabat</span>
+              </a>
+            </li>
             <li class="sidebar-item ">
               <a href="/logout" class="sidebar-link">
                 <i class="bi bi-box-arrow-right"></i>

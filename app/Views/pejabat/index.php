@@ -7,7 +7,7 @@
   <div class="card">
     <div class="card-header">
       <h5 class="card-title">
-        Data Program Studi
+        Data Pejabat
       </h5>
     </div>
     <div class="card-body">
@@ -20,9 +20,9 @@
         <table class="table" id="table">
           <thead>
             <tr>
-              <th>Kode Prodi</th>
-              <th>Nama Prodi</th>
-              <th>Jenjang</th>
+              <th>NIP</th>
+              <th>Nama Pejabat</th>
+              <th>Jabatan</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -52,39 +52,34 @@
         <form action="#" method="POST" enctype="multipart/form-data">
           <input type="hidden" class="form-control" id="uuid" name="uuid">
           <div class="col-sm-12">
-            <h6>Kode Prodi</h6>
+            <h6>NIP</h6>
             <div class="form-group position-relative has-icon-left">
-              <input type="text" class="form-control" id="kodeProdi" name="kodeProdi" placeholder="Isikan Kode Prodi" control-id="ControlID-16">
+              <input type="text" class="form-control" id="nip" name="nip" placeholder="Isikan NIP Pejabat" control-id="ControlID-16">
               <div class="form-control-icon">
-                <i class="bi bi-key"></i>
+                <i class="bi bi-credit-card-2-front"></i>
               </div>
-              <span class="invalid-feedback" id="kodeProdiError"></span>
+              <span class="invalid-feedback" id="nipError"></span>
             </div>
           </div>
           <div class="col-sm-12">
-            <h6>Nama Program Studi</h6>
+            <h6>Nama Pejabat</h6>
             <div class="form-group position-relative has-icon-left">
-              <input type="text" class="form-control" id="namaProdi" name="namaProdi" placeholder="Isikan Nama Program Studi" control-id="ControlID-16">
+              <input type="text" class="form-control" id="nama" name="nama" placeholder="Isikan Nama Pejabat Beserta Gelar" control-id="ControlID-16">
               <div class="form-control-icon">
-                <i class="bi bi-bank"></i>
+                <i class="bi bi-person"></i>
               </div>
-              <span class="invalid-feedback" id="namaProdiError"></span>
+              <span class="invalid-feedback" id="namaError"></span>
             </div>
           </div>
-          <div class="col-md-12">
-            <h6>Jenjang</h6>
-            <fieldset class="form-group">
-              <select class="form-select" id="jenjang" control-id="ControlID-2">
-                <option value="-" selected disabled>-- Silakan Pilih --</option>
-                <option value="D3">D3</option>
-                <option value="S1">S1</option>
-                <option value="S2">S2</option>
-                <option value="S3">S3</option>
-                <option value="PROFESI">PROFESI</option>
-                <option value="SPESIALIS">SPESIALIS</option>
-              </select>
-              <span class="invalid-feedback" id="jenjangError"></span>
-            </fieldset>
+          <div class="col-sm-12">
+            <h6>Jabatan</h6>
+            <div class="form-group position-relative has-icon-left">
+              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Isikan Jabatan" control-id="ControlID-16">
+              <div class="form-control-icon">
+                <i class="bi bi-diagram-3"></i>
+              </div>
+              <span class="invalid-feedback" id="jabatanError"></span>
+            </div>
           </div>
       </div>
       <div class="modal-footer">
@@ -116,7 +111,7 @@
     var table = $('#table').DataTable({
       processing: true,
       serverSide: true,
-      ajax: '<?php echo site_url('/program-studi/ajaxDatatable'); ?>',
+      ajax: '<?php echo site_url('/pejabat/ajaxDatatable'); ?>',
       columnDefs: [{
         targets: -1,
         orderable: false
@@ -136,9 +131,9 @@
     $('#myModalLabel1').html('Tambah Data Program Studi');
     $('#labelTombol').text('Tambah Data');
     $('#uuid').val('');
-    $('#kodeProdi').val('');
-    $('#namProdi').val('');
-    $('#jenjang').val('');
+    $('#nip').val('');
+    $('#nama').val('');
+    $('#jabatan').val('');
     resetValidation();
   }
 
@@ -153,11 +148,11 @@
 
   function tambahData() {
     var formData = new FormData();
-    formData.append('kodeProdi', $('#kodeProdi').val());
-    formData.append('namaProdi', $('#namaProdi').val());
-    formData.append('jenjang', $('#jenjang').val());
+    formData.append('nip', $('#nip').val());
+    formData.append('nama', $('#nama').val());
+    formData.append('jabatan', $('#jabatan').val());
     $.ajax({
-      url: '<?= site_url('program-studi/simpanTambah'); ?>',
+      url: '<?= site_url('pejabat/simpanTambah'); ?>',
       type: 'POST',
       data: formData,
       processData: false,
@@ -187,12 +182,12 @@
     $('#default').modal('show');
     $('#uuid').val(uuid);
     $.ajax({
-      url: '<?= site_url('program-studi/getEdit'); ?>/' + uuid,
+      url: '<?= site_url('pejabat/getEdit'); ?>/' + uuid,
       type: 'GET',
       success: function(data) {
-        $('#kodeProdi').val(data.kode_prodi);
-        $('#namaProdi').val(data.nama_prodi);
-        $('#jenjang').val(data.jenjang).attr('selected', 'true');
+        $('#nip').val(data.nip);
+        $('#nama').val(data.nama);
+        $('#jabatan').val(data.jabatan);
       },
       error: function(xhr, status, error) {
         // Tangani error dari server atau koneksi
@@ -203,12 +198,12 @@
   function updateData() {
     var formData = new FormData();
     var uuid = $('#uuid').val();
-    formData.append('kodeProdi', $('#kodeProdi').val());
-    formData.append('namaProdi', $('#namaProdi').val());
-    formData.append('jenjang', $('#jenjang').val());
+    formData.append('nip', $('#nip').val());
+    formData.append('nama', $('#nama').val());
+    formData.append('jabatan', $('#jabatan').val());
     formData.append('uuid', uuid);
     $.ajax({
-      url: '<?= site_url('program-studi/updateData'); ?>/' + uuid,
+      url: '<?= site_url('pejabat/updateData'); ?>/' + uuid,
       type: 'POST',
       data: formData,
       processData: false,
@@ -243,7 +238,7 @@
     }).then((result) => {
       if (result.isConfirmed) {
         $.ajax({
-          url: '<?= site_url('program-studi/hapusData'); ?>/' + uuid,
+          url: '<?= site_url('pejabat/hapusData'); ?>/' + uuid,
           type: 'GET',
           success: function(data) {
             if (data.status === 'success') {
@@ -264,7 +259,6 @@
   // Bersihkan validasi
   function resetValidation() {
     $('.form-control').removeClass('is-invalid');
-    $('.form-select').removeClass('is-invalid');
     $('.invalid-feedback').text('');
   }
 

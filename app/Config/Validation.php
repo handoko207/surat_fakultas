@@ -196,6 +196,36 @@ class Validation extends BaseConfig
         ]
     ]);
 
+    public array $pejabat = ([
+        'nip' => [
+            'label' => 'NIP',
+            'rules' => 'required|max_length[20]|numeric|is_unique[surat_r_pejabat.nip]',
+            'errors' => [
+                'required' => 'NIP tidak boleh kosong',
+                'max_length' => 'NIP maksimal 20 karakter',
+                'numeric' => 'NIP hanya boleh berisi angka',
+                'is_unique' => 'NIP sudah digunakan',
+            ]
+        ],
+        'nama' => [
+            'label' => 'Nama Pejabat',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Pejabat tidak boleh kosong',
+                'min_length' => 'Nama Pejabat minimal 3 karakter',
+                'max_length' => 'Nama Pejabat maksimal 50 karakter',
+                'regex_match' => 'Nama Pejabat hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'jabatan' => [
+            'label' => 'Jabatan',
+            'rules' => 'required|alpha_numeric_punct',
+            'errors' => [
+                'required' => 'Jabatan tidak boleh kosong',
+                'alpha_numeric_punct' => 'Jabatan hanya boleh berisi huruf, angka, spasi dan tanda baca',
+            ]
+        ]
+    ]);
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------
