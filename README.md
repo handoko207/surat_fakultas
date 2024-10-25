@@ -114,7 +114,7 @@ If you have any questions or suggestions, feel free to contact me:
 
 If you find this project useful and would like to support its development, you can donate:
 
-- PayPal: [https://paypal.me/handoko207?country.x=ID&locale.x=id_ID](https://paypal.me/handoko207?country.x=ID&locale.x=id_ID)
-- Buy Me a Coffee: [buymeacoffee.com/your-link](https://buymeacoffee.com/your-link)
+- PayPal: [Paypal](paypal.me/handoko207)
+- Buy Me a Coffee: [Saweria](https://saweria.co/handoko207)
 
 Thank you for your support!
