@@ -82,12 +82,25 @@
                 <span>Dashboard</span>
               </a>
             </li>
-
+            <li class="sidebar-title">Data Surat</li>
+            <li class="sidebar-item <?= service('uri')->getSegment(1) === 'peminjaman' ? 'active' : ''; ?>">
+              <a href="/peminjaman" class="sidebar-link">
+                <i class="bi bi-building"></i>
+                <span>Peminjaman</span>
+              </a>
+            </li>
             <li class="sidebar-title">Master Data</li>
+
             <li class="sidebar-item <?= service('uri')->getSegment(1) === 'program-studi' ? 'active' : ''; ?>">
               <a href="/program-studi" class="sidebar-link">
                 <i class="bi bi-bank2"></i>
                 <span>Program Studi</span>
+              </a>
+            </li>
+            <li class="sidebar-item <?= service('uri')->getSegment(1) === 'ruangan' ? 'active' : ''; ?>">
+              <a href="/ruangan" class="sidebar-link">
+                <i class="bi bi-buildings"></i>
+                <span>Ruangan</span>
               </a>
             </li>
             <li class="sidebar-item <?= service('uri')->getSegment(1) === 'user' ? 'active' : ''; ?>">

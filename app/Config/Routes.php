@@ -51,3 +51,17 @@ $routes->post('/pejabat/simpanTambah', 'Pejabat::simpanTambah');
 $routes->get('/pejabat/getEdit/(:any)', 'Pejabat::getEdit/$1');
 $routes->post('/pejabat/updateData/(:any)', 'Pejabat::updateData/$1');
 $routes->get('/pejabat/hapusData/(:any)', 'Pejabat::hapusData/$1');
+
+//peminjaman
+$routes->get('/peminjaman', 'Peminjaman::index');
+$routes->get('/peminjaman/ajaxDatatable', 'Peminjaman::ajaxDatatable');
+$routes->get('/peminjaman/tambahData', 'Peminjaman::tambahData');
+
+
+//ruangan
+$routes->get('/ruangan', 'Ruangan::index');
+$routes->get('/ruangan/ajaxDatatable', 'Ruangan::ajaxDatatable');
+$routes->post('/ruangan/simpanTambah', 'Ruangan::simpanTambah');
+$routes->get('/ruangan/getEdit/(:any)', 'Ruangan::getEdit/$1');
+$routes->post('/ruangan/updateData/(:any)', 'Ruangan::updateData/$1');
+$routes->get('/ruangan/hapusData/(:any)', 'Ruangan::hapusData/$1');

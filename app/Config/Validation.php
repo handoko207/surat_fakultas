@@ -226,6 +226,19 @@ class Validation extends BaseConfig
             ]
         ]
     ]);
+
+    public array $ruangan = ([
+        'namaRuangan' => [
+            'label' => 'Nama Ruangan',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Ruangan tidak boleh kosong',
+                'min_length' => 'Nama Ruangan minimal 3 karakter',
+                'max_length' => 'Nama Ruangan maksimal 50 karakter',
+                'regex_match' => 'Nama Ruangan hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ]
+    ]);
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------
