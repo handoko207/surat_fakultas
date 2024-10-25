@@ -1,68 +1,120 @@
-# CodeIgniter 4 Application Starter
+# CodeIgniter 4 Project
 
-## What is CodeIgniter?
+## Table of Contents
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+1. [Clone the Repository](#clone-the-repository)
+2. [Update Dependencies with Composer](#update-dependencies-with-composer)
+3. [Setting Up the Environment (.env)](#setting-up-the-environment-env)
+4. [Run Database Migrations](#run-database-migrations)
+5. [Seeding the Database](#seeding-the-database)
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+---
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Clone the Repository
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+To clone the repository, follow these steps:
 
-## Installation & updates
+```bash
+git clone https://github.com/handoko207/surat_fakultas
+cd your-repo-name
+```
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+---
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+## Update Dependencies with Composer
 
-## Setup
+After cloning the repository, install or update the dependencies using Composer:
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+```bash
+composer install
+```
 
-## Important Change with index.php
+If you need to update the dependencies:
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+```bash
+composer update
+```
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+---
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## Setting Up the Environment (.env)
 
-## Repository Management
+1. Copy the `.env` example file to create your own `.env` configuration:
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+   ```bash
+   cp env .env
+   ```
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+2. Open the `.env` file and configure your environment settings (such as database connection, base URL, and more).
 
-## Server Requirements
+### Example of database configuration:
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+```ini
+# .env file
+app.NameApplication = 'Persuratan Fakultas'
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+database.default.hostname = localhost
+database.default.database = your_database_name
+database.default.username = your_username
+database.default.password = your_password
+database.default.DBDriver = MySQLi
+```
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+Make sure to adjust the values according to your setup.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+---
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+## Run Database Migrations
+
+To migrate the database, run the following command:
+
+```bash
+php spark migrate
+```
+
+This command will apply all the migrations to set up your database tables.
+
+---
+
+## Seeding the Database
+
+To populate the database with initial data, you can run the seeder:
+
+```bash
+php spark db:seed ProgramStudi
+php spark db:seed MasterUser
+```
+
+---
+
+## Additional Information
+
+- For development purposes, you can run the built-in server using:
+
+  ```bash
+  php spark serve
+  ```
+
+- To clear cache or configurations, use:
+
+  ```bash
+  php spark cache:clear
+  ```
+
+---
+
+## Contact Information
+
+If you have any questions or suggestions, feel free to contact me:
+
+- Email: handoko207@gmail.com
+- GitHub: [handoko207](https://github.com/handoko207)
+
+## Support & Donations
+
+If you find this project useful and would like to support its development, you can donate:
+
+- PayPal: [https://paypal.me/handoko207?country.x=ID&locale.x=id_ID](https://paypal.me/handoko207?country.x=ID&locale.x=id_ID)
+- Buy Me a Coffee: [buymeacoffee.com/your-link](https://buymeacoffee.com/your-link)
+
+Thank you for your support!
