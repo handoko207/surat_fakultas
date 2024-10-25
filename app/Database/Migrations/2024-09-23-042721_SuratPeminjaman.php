@@ -13,10 +13,10 @@ class SuratPeminjaman extends Migration
             'uuid' => ['type' => 'CHAR', 'constraint' => 36, 'unique' => true, 'null' => true],
             'uuid_user' => ['type' => 'CHAR', 'constraint' => 36, 'null' => true],
             'no_surat_peminjam' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
-            'jenis_surat' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
+            'jenis_surat' => ['type' => 'ENUM("peminjaman_ruangan","peminjaman_alat")', 'default' => 'peminjaman_alat'],
             'nama_organisasi' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'nama_kegiatan' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
-            'nama_tempat' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
+            'uuid_ruangan' => ['type' => 'CHAR', 'constraint' => 36, 'null' => true],
             'nama_penanggung_jawab' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'kontak_penanggung_jawab' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'tanggal_peminjaman' => ['type' => 'DATE', 'null' => true],
@@ -34,6 +34,7 @@ class SuratPeminjaman extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('uuid_user', 'surat_m_user', 'uuid', 'RESTRICT', 'RESTRICT');
+        $this->forge->addForeignKey('uuid_ruangan', 'surat_r_ruangan', 'uuid', 'RESTRICT', 'RESTRICT');
         $this->forge->createTable('surat_t_peminjaman');
     }
 
