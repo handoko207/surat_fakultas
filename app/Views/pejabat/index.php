@@ -128,7 +128,7 @@
 <script>
   function tambah() {
     $('#default').modal('show');
-    $('#myModalLabel1').html('Tambah Data Program Studi');
+    $('#myModalLabel1').html('Tambah Data Pejabat');
     $('#labelTombol').text('Tambah Data');
     $('#uuid').val('');
     $('#nip').val('');
@@ -177,7 +177,7 @@
 
   function editTampil(uuid) {
     resetValidation();
-    $('#myModalLabel1').html('Edit Data Program Studi');
+    $('#myModalLabel1').html('Edit Data Pejabat');
     $('#labelTombol').text('Update Data');
     $('#default').modal('show');
     $('#uuid').val(uuid);

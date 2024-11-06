@@ -56,6 +56,7 @@ $routes->get('/pejabat/hapusData/(:any)', 'Pejabat::hapusData/$1');
 $routes->get('/peminjaman', 'Peminjaman::index');
 $routes->get('/peminjaman/ajaxDatatable', 'Peminjaman::ajaxDatatable');
 $routes->get('/peminjaman/tambahData', 'Peminjaman::tambahData');
+$routes->post('/peminjaman/simpanData', 'Peminjaman::simpanData');
 
 
 //ruangan

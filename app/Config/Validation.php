@@ -239,6 +239,290 @@ class Validation extends BaseConfig
             ]
         ]
     ]);
+
+    public array $peminjamanRuangan = ([
+        'jenisSurat' => [
+            'label' => 'Jenis Surat',
+            'rules' => 'required|in_list[peminjaman_ruangan]',
+            'errors' => [
+                'required' => 'Jenis Surat tidak boleh kosong',
+                'in_list' => 'Harap memilih Jenis Surat',
+            ]
+        ],
+        'noSuratPeminjam' => [
+            'label' => 'Nomor Surat Peminjam',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9\/\-., ]+$/]',
+            'errors' => [
+                'required' => 'Nomor Surat Peminjam tidak boleh kosong',
+                'min_length' => 'Nomor Surat Peminjam minimal 3 karakter',
+                'max_length' => 'Nomor Surat Peminjam maksimal 50 karakter',
+                'regex_match' => 'Nomor Surat Peminjam hanya boleh berisi huruf, angka dan tanda baca (-), (/), (.)',
+            ]
+        ],
+        'tanggalPeminjaman' => [
+            'label' => 'Tanggal Peminjaman',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'Tanggal Peminjaman tidak boleh kosong',
+                'valid_date' => 'Tanggal Peminjaman tidak valid',
+            ]
+        ],
+        'namaHima' => [
+            'label' => 'Nama Hima',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Hima tidak boleh kosong',
+                'min_length' => 'Nama Hima minimal 3 karakter',
+                'max_length' => 'Nama Hima maksimal 50 karakter',
+                'regex_match' => 'Nama Hima hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'namaKetuaHima' => [
+            'label' => 'Nama Ketua Hima',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Ketua Hima tidak boleh kosong',
+                'min_length' => 'Nama Ketua Hima minimal 3 karakter',
+                'max_length' => 'Nama Ketua Hima maksimal 50 karakter',
+                'regex_match' => 'Nama Ketua Hima hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'nimKetuaHima' => [
+            'label' => 'NIM Ketua Hima',
+            'rules' => 'required|min_length[3]|max_length[20]|alpha_numeric',
+            'errors' => [
+                'required' => 'NIM Ketua Hima tidak boleh kosong',
+                'min_length' => 'NIM Ketua Hima minimal 3 karakter',
+                'max_length' => 'NIM Ketua Hima maksimal 20 karakter',
+                'alpha_numeric' => 'NIM Ketua Hima hanya boleh berisi huruf dan angka',
+            ]
+        ],
+        'namaKetuaPelaksana' => [
+            'label' => 'Nama Ketua Pelaksana',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Ketua Pelaksana tidak boleh kosong',
+                'min_length' => 'Nama Ketua Pelaksana minimal 3 karakter',
+                'max_length' => 'Nama Ketua Pelaksana maksimal 50 karakter',
+                'regex_match' => 'Nama Ketua Pelaksana hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'nimKetuaPelaksana' => [
+            'label' => 'NIM Ketua Pelaksana',
+            'rules' => 'required|min_length[3]|max_length[20]|alpha_numeric',
+            'errors' => [
+                'required' => 'NIM Ketua Pelaksana tidak boleh kosong',
+                'min_length' => 'NIM Ketua Pelaksana minimal 3 karakter',
+                'max_length' => 'NIM Ketua Pelaksana maksimal 20 karakter',
+                'alpha_numeric' => 'NIM Ketua Pelaksana hanya boleh berisi huruf dan angka',
+            ]
+        ],
+        'namaOrganisasi' => [
+            'label' => 'Nama Organisasi',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Organisasi tidak boleh kosong',
+                'min_length' => 'Nama Organisasi minimal 3 karakter',
+                'max_length' => 'Nama Organisasi maksimal 50 karakter',
+                'regex_match' => 'Nama Organisasi hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'namaKegiatan' => [
+            'label' => 'Nama Kegiatan',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Kegiatan tidak boleh kosong',
+                'min_length' => 'Nama Kegiatan minimal 3 karakter',
+                'max_length' => 'Nama Kegiatan maksimal 50 karakter',
+                'regex_match' => 'Nama Kegiatan hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'namaPenanggungJawab' => [
+            'label' => 'Nama Penanggung Jawab',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Penanggung Jawab tidak boleh kosong',
+                'min_length' => 'Nama Penanggung Jawab minimal 3 karakter',
+                'max_length' => 'Nama Penanggung Jawab maksimal 50 karakter',
+                'regex_match' => 'Nama Penanggung Jawab hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'kontakPenanggungJawab' => [
+            'label' => 'Kontak Penanggung Jawab',
+            'rules' => 'required|min_length[3]|max_length[50]|numeric',
+            'errors' => [
+                'required' => 'Kontak Penanggung Jawab tidak boleh kosong',
+                'min_length' => 'Kontak Penanggung Jawab minimal 3 karakter',
+                'max_length' => 'Kontak Penanggung Jawab maksimal 50 karakter',
+                'numeric' => 'Kontak Penanggung Jawab hanya boleh berisi angka ',
+            ]
+        ],
+        'uuidRuangan' => [
+            'label' => 'Ruangan',
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Harap memilih Ruangan',
+            ]
+        ],
+        'tanggalAwal' => [
+            'label' => 'Tanggal Awal',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'Tanggal Awal tidak boleh kosong',
+                'valid_date' => 'Tanggal Awal tidak valid',
+            ]
+        ],
+        'tanggalAkhir' => [
+            'label' => 'Tanggal Akhir',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'Tanggal Akhir tidak boleh kosong',
+                'valid_date' => 'Tanggal Akhir tidak valid',
+            ]
+        ],
+    ]);
+    public array $peminjamanAlatBahan = ([
+        'jenisSurat' => [
+            'label' => 'Jenis Surat',
+            'rules' => 'required|in_list[peminjaman_alat_bahan]',
+            'errors' => [
+                'required' => 'Jenis Surat tidak boleh kosong',
+                'in_list' => 'Harap memilih Jenis Surat',
+            ]
+        ],
+        'noSuratPeminjam' => [
+            'label' => 'Nomor Surat Peminjam',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9\/\-., ]+$/]',
+            'errors' => [
+                'required' => 'Nomor Surat Peminjam tidak boleh kosong',
+                'min_length' => 'Nomor Surat Peminjam minimal 3 karakter',
+                'max_length' => 'Nomor Surat Peminjam maksimal 50 karakter',
+                'regex_match' => 'Nomor Surat Peminjam hanya boleh berisi huruf, angka dan tanda baca (-), (/), (.)',
+            ]
+        ],
+        'namaOrganisasi' => [
+            'label' => 'Nama Organisasi',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Organisasi tidak boleh kosong',
+                'min_length' => 'Nama Organisasi minimal 3 karakter',
+                'max_length' => 'Nama Organisasi maksimal 50 karakter',
+                'regex_match' => 'Nama Organisasi hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'namaKegiatan' => [
+            'label' => 'Nama Kegiatan',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Kegiatan tidak boleh kosong',
+                'min_length' => 'Nama Kegiatan minimal 3 karakter',
+                'max_length' => 'Nama Kegiatan maksimal 50 karakter',
+                'regex_match' => 'Nama Kegiatan hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'uuidRuangan' => [
+            'label' => 'Ruangan',
+            'rules' => 'required|not_in_list[81b84279-716c-402b-818d-f3cae3f38e1b]',
+            'errors' => [
+                'required' => 'Ruangan tidak boleh kosong',
+                'not_in_list' => 'Harap memilih Ruangan',
+            ]
+        ],
+        'namaPenanggungJawab' => [
+            'label' => 'Nama Penanggung Jawab',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Penanggung Jawab tidak boleh kosong',
+                'min_length' => 'Nama Penanggung Jawab minimal 3 karakter',
+                'max_length' => 'Nama Penanggung Jawab maksimal 50 karakter',
+                'regex_match' => 'Nama Penanggung Jawab hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'kontakPenanggungJawab' => [
+            'label' => 'Kontak Penanggung Jawab',
+            'rules' => 'required|min_length[3]|max_length[50]|numeric',
+            'errors' => [
+                'required' => 'Kontak Penanggung Jawab tidak boleh kosong',
+                'min_length' => 'Kontak Penanggung Jawab minimal 3 karakter',
+                'max_length' => 'Kontak Penanggung Jawab maksimal 50 karakter',
+                'numeric' => 'Kontak Penanggung Jawab hanya boleh berisi angka',
+            ]
+        ],
+        'tanggalPeminjaman' => [
+            'label' => 'Tanggal Peminjaman',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'Tanggal Peminjaman tidak boleh kosong',
+                'valid_date' => 'Tanggal Peminjaman tidak valid',
+            ]
+        ],
+        'tanggalAwal' => [
+            'label' => 'Tanggal Awal',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'Tanggal Awal tidak boleh kosong',
+                'valid_date' => 'Tanggal Awal tidak valid',
+            ]
+        ],
+        'tanggalAkhir' => [
+            'label' => 'Tanggal Akhir',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'Tanggal Akhir tidak boleh kosong',
+                'valid_date' => 'Tanggal Akhir tidak valid',
+            ]
+        ],
+        'namaHima' => [
+            'label' => 'Nama Hima',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Hima tidak boleh kosong',
+                'min_length' => 'Nama Hima minimal 3 karakter',
+                'max_length' => 'Nama Hima maksimal 50 karakter',
+                'regex_match' => 'Nama Hima hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'namaKetuaHima' => [
+            'label' => 'Nama Ketua Hima',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Ketua Hima tidak boleh kosong',
+                'min_length' => 'Nama Ketua Hima minimal 3 karakter',
+                'max_length' => 'Nama Ketua Hima maksimal 50 karakter',
+                'regex_match' => 'Nama Ketua Hima hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'nimKetuaHima' => [
+            'label' => 'NIM Ketua Hima',
+            'rules' => 'required|min_length[3]|max_length[20]|alpha_numeric',
+            'errors' => [
+                'required' => 'NIM Ketua Hima tidak boleh kosong',
+                'min_length' => 'NIM Ketua Hima minimal 3 karakter',
+                'max_length' => 'NIM Ketua Hima maksimal 20 karakter',
+                'alpha_numeric' => 'NIM Ketua Hima hanya boleh berisi huruf dan angka',
+            ]
+        ],
+        'namaKetuaPelaksana' => [
+            'label' => 'Nama Ketua Pelaksana',
+            'rules' => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9., ]+$/]',
+            'errors' => [
+                'required' => 'Nama Ketua Pelaksana tidak boleh kosong',
+                'min_length' => 'Nama Ketua Pelaksana minimal 3 karakter',
+                'max_length' => 'Nama Ketua Pelaksana maksimal 50 karakter',
+                'regex_match' => 'Nama Ketua Pelaksana hanya boleh berisi huruf, spasi dan tanda baca',
+            ]
+        ],
+        'nimKetuaPelaksana' => [
+            'label' => 'NIM Ketua Pelaksana',
+            'rules' => 'required|min_length[3]|max_length[20]|alpha_numeric',
+            'errors' => [
+                'required' => 'NIM Ketua Pelaksana tidak boleh kosong',
+                'min_length' => 'NIM Ketua Pelaksana minimal 3 karakter',
+                'max_length' => 'NIM Ketua Pelaksana maksimal 20 karakter',
+                'alpha_numeric' => 'NIM Ketua Pelaksana hanya boleh berisi huruf dan angka',
+            ]
+        ]
+    ]);
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------

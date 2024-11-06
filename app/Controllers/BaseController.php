@@ -63,7 +63,13 @@ abstract class BaseController extends Controller
     public function getProgramStudi()
     {
         $model = new \App\Models\ModelProgramStudi();
-        return $model->findAll();
+        return $model->select('uuid,kode_prodi,nama_prodi,jenjang')->findAll();
+    }
+
+    public function getRuangan()
+    {
+        $model = new \App\Models\ModelRuangan();
+        return $model->select('uuid,nama_ruangan')->findAll();
     }
 
     public function checkAkses($role)
@@ -72,7 +78,6 @@ abstract class BaseController extends Controller
         if (in_array($this->role, $role)) {
             return true;
         }
-
         // Jika role user tidak ada, return false
         return false;
     }

@@ -7,20 +7,23 @@
   <div class="card">
     <div class="card-header">
       <h5 class="card-title">
-        Data Ruangan
+        Data Peminjaman
       </h5>
     </div>
     <div class="card-body">
       <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-primary block mb-2" onclick="tambah()">
-          Tambah Data
-        </button>
+        <a href="/peminjaman/tambahData" class="btn btn-primary block mb-2">Tambah Data</a>
       </div>
       <div class="table-responsive">
         <table class="table" id="table">
           <thead>
             <tr>
-              <th>Nama Ruangan</th>
+              <th>Nomor Surat</th>
+              <th>Jenis Surat</th>
+              <th>Tanggal Awal </th>
+              <th>Tanggal Akhir </th>
+              <th>Status</th>
+              <th>Keterangan</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -34,48 +37,6 @@
 </section>
 <!-- Basic Tables end -->
 
-<!-- Modal -->
-<div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel1">Basic Modal</h5>
-        <button type="button" class="close rounded-pill" data-bs-dismiss="modal"
-          aria-label="Close">
-          <i data-feather="x"></i>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="#" method="POST" enctype="multipart/form-data">
-          <input type="hidden" class="form-control" id="uuid" name="uuid">
-          <div class="col-sm-12">
-            <h6>Nama Ruangan</h6>
-            <div class="form-group position-relative has-icon-left">
-              <input type="text" class="form-control" id="namaRuangan" name="namaRuangan" placeholder="Isikan Nama Ruangan" control-id="ControlID-16">
-              <div class="form-control-icon">
-                <i class="bi bi-building-add"></i>
-              </div>
-              <span class="invalid-feedback" id="namaRuanganError"></span>
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger ms-1" data-bs-dismiss="modal">
-          <i class="bx bx-x d-block d-sm-none"></i>
-          <span class="d-none d-sm-block">Batal</span>
-        </button>
-        <button type="button" class="btn btn-primary ms-1" onclick="simpan()">
-          <i class="bx bx-check d-block d-sm-none"></i>
-          <span class="d-none d-sm-block" id="labelTombol">Tambah Data</span>
-        </button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- ModalEnd -->
-
-
 <?= $this->endSection(); ?>
 <?= $this->section('javascript'); ?>
 <script src="<?= base_url(); ?>/assets/mazer/extensions/jquery/jquery.min.js"></script>
@@ -85,15 +46,35 @@
 
 <script>
   $(document).ready(function() {
-    var nomor = 1;
     var table = $('#table').DataTable({
       processing: true,
       serverSide: true,
-      ajax: '<?php echo site_url('/ruangan/ajaxDatatable'); ?>',
-      columnDefs: [{
-          targets: -1,
-          orderable: false
-        }, //target -1 means last column
+      ajax: '/peminjaman/ajaxDatatable',
+      columns: [{
+          data: 'no_surat_peminjam'
+        },
+        {
+          data: 'jenis_surat',
+          render(jenis_surat) {
+            return jenis_surat == 'peminjaman_ruangan' ? 'Peminjaman Ruang' : 'Peminjaman Alat / Bahan';
+          },
+        },
+        {
+          data: 'tanggal_awal'
+        },
+        {
+          data: 'tanggal_akhir'
+        },
+        {
+          data: 'status'
+        },
+        {
+          data: 'status_keterangan'
+        },
+        {
+          data: 'action',
+          orderable: false,
+        }
       ],
       drawCallback: function(settings) {
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -107,10 +88,12 @@
 <script>
   function tambah() {
     $('#default').modal('show');
-    $('#myModalLabel1').html('Tambah Data Ruangan');
+    $('#myModalLabel1').html('Tambah Data Program Studi');
     $('#labelTombol').text('Tambah Data');
     $('#uuid').val('');
-    $('#namaRuangan').val('');
+    $('#nip').val('');
+    $('#nama').val('');
+    $('#jabatan').val('');
     resetValidation();
   }
 
@@ -125,9 +108,11 @@
 
   function tambahData() {
     var formData = new FormData();
-    formData.append('namaRuangan', $('#namaRuangan').val());
+    formData.append('nip', $('#nip').val());
+    formData.append('nama', $('#nama').val());
+    formData.append('jabatan', $('#jabatan').val());
     $.ajax({
-      url: '<?= site_url('ruangan/simpanTambah'); ?>',
+      url: '<?= site_url('pejabat/simpanTambah'); ?>',
       type: 'POST',
       data: formData,
       processData: false,
@@ -157,10 +142,12 @@
     $('#default').modal('show');
     $('#uuid').val(uuid);
     $.ajax({
-      url: '<?= site_url('ruangan/getEdit'); ?>/' + uuid,
+      url: '<?= site_url('pejabat/getEdit'); ?>/' + uuid,
       type: 'GET',
       success: function(data) {
-        $('#namaRuangan').val(data.nama_ruangan);
+        $('#nip').val(data.nip);
+        $('#nama').val(data.nama);
+        $('#jabatan').val(data.jabatan);
       },
       error: function(xhr, status, error) {
         // Tangani error dari server atau koneksi
@@ -171,10 +158,12 @@
   function updateData() {
     var formData = new FormData();
     var uuid = $('#uuid').val();
-    formData.append('namaRuangan', $('#namaRuangan').val());
+    formData.append('nip', $('#nip').val());
+    formData.append('nama', $('#nama').val());
+    formData.append('jabatan', $('#jabatan').val());
     formData.append('uuid', uuid);
     $.ajax({
-      url: '<?= site_url('ruangan/updateData'); ?>/' + uuid,
+      url: '<?= site_url('pejabat/updateData'); ?>/' + uuid,
       type: 'POST',
       data: formData,
       processData: false,
@@ -209,7 +198,7 @@
     }).then((result) => {
       if (result.isConfirmed) {
         $.ajax({
-          url: '<?= site_url('ruangan/hapusData'); ?>/' + uuid,
+          url: '<?= site_url('peminjaman/hapusData'); ?>/' + uuid,
           type: 'GET',
           success: function(data) {
             if (data.status === 'success') {

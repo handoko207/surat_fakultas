@@ -89,7 +89,7 @@
                 <span>Peminjaman</span>
               </a>
             </li>
-            <li class="sidebar-title">Master Data</li>
+            <li class="sidebar-title">Data Referensi</li>
 
             <li class="sidebar-item <?= service('uri')->getSegment(1) === 'program-studi' ? 'active' : ''; ?>">
               <a href="/program-studi" class="sidebar-link">
