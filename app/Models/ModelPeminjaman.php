@@ -43,4 +43,11 @@ class ModelPeminjaman extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getDataTables()
+    {
+        $builder = $this->db->table($this->table);
+        $builder->select('uuid, no_surat_peminjam, jenis_surat, DATE_FORMAT(tanggal_awal, "%d-%m-%Y") as tanggal_awal, DATE_FORMAT(tanggal_akhir, "%d-%m-%Y") as tanggal_akhir, status, status_keterangan');
+        return $builder;
+    }
 }

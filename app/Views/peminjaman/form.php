@@ -206,6 +206,7 @@
 <script>
   var role = "<?= $role; ?>";
   var uuid = $("#uuid").val();
+  var alatBahanArray = [];
 
   // Hide Form
   document.addEventListener("DOMContentLoaded", function() {
@@ -250,9 +251,8 @@
   // Fungsi untuk menambahkan alat/bahan
   function tambahAlat() {
     event.preventDefault(); // Mencegah submit form atau reload halaman
-    var bahan = $("#bahan").val();
+    var bahan = $("#namaBarang").val();
     var jumlah = $("#jumlah").val();
-
     if (bahan && jumlah) {
       var html = `<tr>
                   <td>${bahan}</td>
@@ -264,7 +264,11 @@
       $("#tableAlat tbody").append(html);
 
       // Kosongkan input setelah menambahkan
-      $("#bahan").val('');
+      alatBahanArray.push({
+        bahan: bahan,
+        jumlah: jumlah
+      });
+      $("#namaBarang").val('');
       $("#jumlah").val('');
     } else {
       showNotification('Tambah Alat/Bahan', 'Data Alat/bahan dan Jumlah tidak boleh kosong', 'error');
@@ -322,14 +326,16 @@
       nimKetuaPelaksana: $("#nimKetuaPelaksana").val(),
       status: $("#status").val(),
       statusKeterangan: $("#statusKeterangan").val(),
+      alatBahanArray: alatBahanArray,
     };
     $.ajax({
       url: "<?= site_url('peminjaman/simpanData'); ?>",
       type: "POST",
       data: data,
+
       success: function(response) {
         if (response.status == "success") {
-          showNotification('Tambah Data', response.message, 'success');
+          showNotification(response.title, response.text, response.icon); // Tampilkan notifikasi
           setTimeout(() => {
             window.location.href = "<?= site_url('peminjaman'); ?>";
           }, 2000);

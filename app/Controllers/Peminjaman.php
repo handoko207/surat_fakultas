@@ -29,7 +29,7 @@ class Peminjaman extends BaseController
             exit;
         }
         $peminjamanModels = new peminjamanModels();
-        $peminjamanModels->select('uuid, no_surat_peminjam, jenis_surat, DATE_FORMAT(tanggal_awal, "%d-%m-%Y") as tanggal_awal, DATE_FORMAT(tanggal_akhir, "%d-%m-%Y") as tanggal_akhir, status, status_keterangan');
+        $peminjamanModels->getDataTables();
         return DataTable::of($peminjamanModels)->add('action', function ($row) {
             return '<a href="#" class="btn icon btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Edit Data" onclick="editTampil(\'' . $row->uuid . '\')"><i class="bi bi-pencil"></i></a> 
                     <a href="#" class="btn icon btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Hapus Data" onclick="hapusData(\'' . $row->uuid . '\')"><i class="bi bi-x"></i></a>
@@ -60,6 +60,8 @@ class Peminjaman extends BaseController
         $peminjamanModels = new peminjamanModels();
         $peminjamanDetailModels = new peminjamanDetailModels();
         $uuid = $this->uuid;
+        $alat_bahan = $this->request->getPost('alatBahanArray');
+
         $jenisSurat = $this->request->getPost('jenisSurat');
         if ($jenisSurat == 'peminjaman_ruangan') {
             if (!$this->validation->run($this->request->getPost(), 'peminjamanRuangan')) {
@@ -99,15 +101,21 @@ class Peminjaman extends BaseController
             'status_keterangan' => 'Menunggu Konfirmasi',
         ];
         $peminjamanModels->insert($data);
-        $dataDetail = [
-            'uuid_peminjaman' => $uuid,
-            'uuid_ruangan' => $this->request->getPost('uuid_ruangan'),
-            'keperluan' => $this->request->getPost('keperluan'),
-            'jumlah_peserta' => $this->request->getPost('jumlah_peserta'),
-            'status' => '1',
-            'status_keterangan' => 'Menunggu Konfirmasi',
-        ];
-        $peminjamanDetailModels->insert($dataDetail);
-        return redirect()->to('/peminjaman');
+        if ($jenisSurat == 'peminjaman_alat_bahan') {
+            foreach ($alat_bahan as $key => $value) {
+                $dataDetail = [
+                    'uuid_surat_peminjaman' => $data['uuid'],
+                    'nama_barang' => $value['bahan'],
+                    'jumlah' => $value['jumlah'],
+                ];
+                $peminjamanDetailModels->insert($dataDetail);
+            }
+        }
+        return $this->response->setJSON([
+            'status' => 'success',
+            'title' => 'Tambah Data',
+            'text' => 'Data Berhasil Ditambahkan',
+            'icon' => 'success'
+        ]);
     }
 }

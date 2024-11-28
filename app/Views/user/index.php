@@ -280,7 +280,7 @@
           showNotification(data.title, data.text, data.icon); // Tampilkan notifikasi
         } else if (data.status === 'error') {
           showErrors(data.errors); // Tampilkan error di setiap field
-          $('#default').modal('show'); // Tetap tampilkan modal jika ada error
+          $('#default').modal('show'); // Tetap tampilkan modal   jika ada error
         }
       },
       error: function(xhr, status, error) {
